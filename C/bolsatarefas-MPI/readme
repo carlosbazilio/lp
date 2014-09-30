@@ -1,0 +1,33 @@
+-- Compilando em C
+(as duas versoes em C podem ser usadas para avaliar o ganho da versao concorrente)
+seq-primos.c: gcc seq-primos.c -o seq -lm
+conc-primos.c: gcc conc-primos.c -o conc -lm -lpthread
+
+-- Compilando em Java
+(a versao Java tem um custo maior de sincronizacao para contabilizar o numero de primos encontrados, linha 55)
+javac TPrimos.java 
+
+
+------------------ Funcoes MPI
+- MPI_Init: inicializa o sistema de troca de mensagens (deve ser chamada em
+todo programa MPI, deve preceder todas as demais chamadas MPI, e deve ser
+chamada apenas uma vez no programa);
+- MPI_Finalize: finaliza o sistema de troca de mensagens (deve ser chamada em
+todo programa MPI, e deve ser a ultima chamada MPI);
+- MPI_Comm_rank: obtem o rank ou identificador de um processo dentro de um
+grupo (o primeiro identificador tem valor 0);
+- MPI_Comm_size: obtem a quantidade de processos pertencentes a um grupo;
+(inicialmente todos os processos pertencem a um mesmo grupo, todo grupo esta associado
+a um comunicador, a variavel MPI_COMM_WORLD eh o comunicador que identifica o grupo mais geral) 
+- MPI_Send (buffer,count,type,dest,tag,comm): envia uma mensagem a um destinatario (retorna apos o buffer de envio ficar livre);
+- MPI_Recv (buffer,count,type,source,tag,comm,status): recebe uma mensagem de um remetente (bloqueante)
+(as mensagens sao constituidas de: (a) dados (valores + tipo) e (b) cabecalho (origem, destino, tag e comunicador),
+o tag eh um identificador para a mensagem,
+as chamadas MPI_Send e MPI_Recv correspondentes devem possuir o mesmo tag e o mesmo comunicador);
+
+-- Compilando em MPI
+mpicc -o mpi-primos mpi-primos.c
+
+-- Executando em MPI (com dois processos)
+mpirun -np 2 mpi-primos
+

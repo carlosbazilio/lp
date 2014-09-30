@@ -1,0 +1,9 @@
+for ((i=1; i<=1; i++))
+do 
+	echo "Iteracao: ${i} ";
+	for f in entradas/*.txt 
+	do 
+		C/./c1 $f $f s >> resultado.txt
+	done
+	echo "" 
+done
