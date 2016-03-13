@@ -19,6 +19,12 @@ filtra (cab:resto) f =
 
 grande s = (length s) > 5
 
+mult3 [] = 0
+mult3 (cab:corpo) = (mult3' cab) + (mult3 corpo)
+mult3' (a,b) = a*b
+
+
+
 
 
 
