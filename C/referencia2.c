@@ -1,12 +1,17 @@
 #include "stdio.h"
 
-void soma(int &v) {
-	v = 10;
+typedef struct tsolucao {
+	int val[5];
+} tsolucao;
+
+tsolucao soma() {
+	tsolucao v = {1, 2, 3, 4, 5};
+	return v;
 }
 
 main() {
-	//int v[] = {1, 2, 3};
-	int v;
-	soma(v);
-	printf("%d\n", v);
+	tsolucao w;
+	w = soma();
+	printf("%d\n", w.val[3]);
 }
+

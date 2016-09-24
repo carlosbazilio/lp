@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "math.h"
 
 struct lista_gen {
 	void* info;
@@ -8,6 +9,10 @@ struct lista_gen {
 	int (* compara)(void *, void *);
 	struct lista_gen* prox;
 };
+
+typedef struct tReta {
+	int x1, y1, x2, y2;
+} tReta;
 
 typedef struct lista_gen ListaGen;
 
@@ -49,6 +54,26 @@ void imprimeString (void *p) {
 
 void imprimeNumero (void *p) {
 	printf("%d\n", *((int *)p));
+}
+
+void imprimeReta (void *p) {
+	tReta *reta = (tReta *)p;
+	printf("(%d,%d)-(%d,%d)\n", reta->x1, reta->y1, reta->x2, reta->y2);
+}
+
+int comparaReta (void *v1, void *v2) {
+	tReta *r1 = (tReta *)v1;
+	tReta *r2 = (tReta *)v2;
+
+	double tam1 = sqrt(pow(r1->x1 - r1->x2, 2) + pow(r1->y1 - r1->y2, 2));
+	double tam2 = sqrt(pow(r2->x1 - r2->x2, 2) + pow(r2->y1 - r2->y2, 2));
+
+	if (tam1 > tam2)
+		return 1;
+	else
+		if (tam1 < tam2)
+			return -1;
+	return 0;
 }
 
 int comparaInt (void *v1, void *v2) {
@@ -122,6 +147,11 @@ main() {
 	(*x) = 10;
 	//l = insere(l, x, imprimeNumero);
 	insere2(&l, x, imprimeNumero, comparaInt);
+
+	tReta *reta = (tReta *)malloc(sizeof(tReta));
+	reta->x1 = 0; reta->y1 = 0; reta->x2 = 3; reta->y2 = 4;
+	insere2(&l, reta, imprimeReta, comparaReta);
+
 	printf("Tamanho da lista: %d\n", tamanho(l));
 	exibe(l);
 	int *y = (int *)malloc(sizeof(int));
