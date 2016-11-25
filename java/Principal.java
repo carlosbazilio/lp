@@ -1,5 +1,6 @@
 // Classe
-class Livro
+// Classes em Java extendem implicitamente a classe Object
+class Livro //extends Object
 {
 	// Atributos da classe
 	String titulo;
@@ -11,12 +12,21 @@ class Livro
 	public Livro (String t, String a, String e, int n) {
 		titulo = t; autor = a; editora = e; num_paginas = n;
 	}
+
+	// Redefinição do método toString() herdado da classe Object
+	public String toString() {
+		return titulo + "," + 
+			   autor + "," + 
+			   editora + "," + 
+			   num_paginas + " " + super.toString();
+	}
 }
 
-class Acervo 
+class Acervo
 {
-	Livro livros[];
-	int num_livros;
+	// Encapsulamento
+	private Livro livros[];
+	private int num_livros;
 
 	public Acervo (int tam) {
 		livros = new Livro[tam];
@@ -31,7 +41,11 @@ class Acervo
 
 	public void imprimeAcervo() {
 		for (int i=0; i<num_livros; i++) {
-			// System.out.println(livros[i].titulo + "," + livros[i].autor + "," + livros[i].editora + "," + livros[i].num_paginas);
+			/*System.out.println(livros[i].titulo + "," + 
+				               livros[i].autor + "," + 
+				               livros[i].editora + "," + 
+				               livros[i].num_paginas);*/
+			// Chamada do método toString() da classe Livro
 			System.out.println(livros[i]);
 		}
 	}
@@ -80,6 +94,8 @@ public class Principal {
 		meuslivros = new Acervo(1000);
 		meuslivros.adicionaLivro(ctotal);
 		meuslivros.adicionaLivro(enigmado8);
+		// Acesso indevido, mas controlado pelo encapsulamento (private)
+		//meuslivros.livros[1005] = ctotal;
 		meuslivros.imprimeAcervo();
 		System.out.println("Quantidade de paginas: " + meuslivros.contaPaginas());
 	}	
