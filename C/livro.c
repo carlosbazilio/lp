@@ -9,34 +9,51 @@ typedef struct livro
 	int num_paginas;
 } livro;
 
-void imprimeAcervo(livro valores[], int n) {
-	int i;
-	for (i=0; i<n; i++)
-		printf("%s, %s, %s, %d\n", valores[i].titulo, valores[i].autor, valores[i].editora, valores[i].num_paginas);
+typedef struct acervo
+{
+	livro livros[TAMANHO_ACERVO];
+	int num_livros;
+} acervo;
+
+void adicionaLivro(acervo *valores, livro l) {
+	valores->livros[valores->num_livros] = l;
+	valores->num_livros++;
 }
 
-int contaPaginasAcervo(livro valores[], int n) {
+void imprimeAcervo(acervo valores) {
+	int i;
+	for (i=0; i<valores.num_livros; i++)
+		printf("%s, %s, %s, %d\n", valores.livros[i].titulo, 
+			                       valores.livros[i].autor, 
+			                       valores.livros[i].editora, 
+			                       valores.livros[i].num_paginas);
+}
+
+int contaPaginasAcervo(acervo valores) {
 	int i; int paginas = 0;
-	for (i=0; i<n; i++)
-		paginas += valores[i].num_paginas;
+	for (i=0; i<valores.num_livros; i++)
+		paginas += valores.livros[i].num_paginas;
 	return paginas;
 }
 
 main() {
-	livro acervo[TAMANHO_ACERVO];
-	int num_livros = 0;
+	acervo meus_livros;
+	meus_livros.num_livros = 0;
 
 	livro ctotal = {"C Total e Completo", "Eber Schimidt", "LTC", 800};
 	livro enigmado8 = {"Enigma do 8", "Katherine Neville", "Rocco", 678};
 
-	acervo[num_livros++] = ctotal;
-	acervo[num_livros++] = enigmado8;
+	//meus_livros.livros[meus_livros.num_livros++] = ctotal;
+	//meus_livros.livros[meus_livros.num_livros++] = enigmado8;
+	adicionaLivro(&meus_livros, ctotal);
+	adicionaLivro(&meus_livros, enigmado8);
+	//meus_livros.livros[-1] = ctotal;
 		
 	// printf("%s, %s, %s, %d\n", ctotal.titulo, ctotal.autor, ctotal.editora, ctotal.num_paginas);
 	// printf("%s, %s, %s, %d\n", enigmado8.titulo, enigmado8.autor, enigmado8.editora, enigmado8.num_paginas);
 
-	imprimeAcervo(acervo, num_livros);
+	imprimeAcervo(meus_livros);
 
-	printf("Quantidade de paginas: %d\n", contaPaginasAcervo(acervo, num_livros));
+	printf("Quantidade de paginas: %d\n", contaPaginasAcervo(meus_livros));
 }
 
