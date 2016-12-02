@@ -7,15 +7,22 @@ typedef struct livro
 	char autor[50];
 	char editora[20];
 	int num_paginas;
-} livro;
+} tlivro;
+
+typedef struct dicionario
+{
+	tlivro livro;
+	char origem[20];
+	char destino[20];
+} tdicionario;
 
 typedef struct acervo
 {
-	livro livros[TAMANHO_ACERVO];
+	tlivro livros[TAMANHO_ACERVO];
 	int num_livros;
 } acervo;
 
-void adicionaLivro(acervo *valores, livro l) {
+void adicionaLivro(acervo *valores, tlivro l) {
 	valores->livros[valores->num_livros] = l;
 	valores->num_livros++;
 }
@@ -40,13 +47,17 @@ main() {
 	acervo meus_livros;
 	meus_livros.num_livros = 0;
 
-	livro ctotal = {"C Total e Completo", "Eber Schimidt", "LTC", 800};
-	livro enigmado8 = {"Enigma do 8", "Katherine Neville", "Rocco", 678};
+	tlivro ctotal = {"C Total e Completo", "Eber Schimidt", "LTC", 800};
+	tlivro enigmado8 = {"Enigma do 8", "Katherine Neville", "Rocco", 678};
+
+	tdicionario aurelio = {{"Dicionario da Lingua Portuguesa", "Aurelio", "Atlas", 425}, "Portugues", "Portugues"};
 
 	//meus_livros.livros[meus_livros.num_livros++] = ctotal;
 	//meus_livros.livros[meus_livros.num_livros++] = enigmado8;
 	adicionaLivro(&meus_livros, ctotal);
 	adicionaLivro(&meus_livros, enigmado8);
+
+	adicionaLivro(&meus_livros, aurelio.livro);
 	//meus_livros.livros[-1] = ctotal;
 		
 	// printf("%s, %s, %s, %d\n", ctotal.titulo, ctotal.autor, ctotal.editora, ctotal.num_paginas);
