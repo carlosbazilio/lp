@@ -1,3 +1,5 @@
+import java.util.*;
+
 // Classe
 // Classes em Java extendem implicitamente a classe Object
 class Livro //extends Object
@@ -5,20 +7,60 @@ class Livro //extends Object
 	// Atributos da classe
 	String titulo;
 	String autor;
-	String editora;
+	Editora editora;
 	int num_paginas;
 
 	//Construtor (método especial cuja função é criar objetos)
-	public Livro (String t, String a, String e, int n) {
-		titulo = t; autor = a; editora = e; num_paginas = n;
+	public Livro (String titulo, String a, Editora e, int n) {
+		this.titulo = titulo; this.autor = a; this.editora = e; this.num_paginas = n;
+		e.adicionaLivro(this);
 	}
 
 	// Redefinição do método toString() herdado da classe Object
 	public String toString() {
-		return titulo + "," + 
-			   autor + "," + 
-			   editora + "," + 
-			   num_paginas + " " + super.toString();
+		return this.titulo + "," + 
+			   this.autor + "," + 
+			   this.editora.toString() + "," + 
+			   this.num_paginas + " "/* + super.toString()*/;
+	}
+}
+
+class Editora {
+	String nome;
+	String endereco;
+	String contato;
+	String cnpj;
+	//Livro livros[];
+	List livros;
+
+	public Editora (String n, String e, String c, String cn) {
+		nome = n; endereco = e; contato = c; cnpj = cn;
+		//livros = new Livro[1000];
+		livros = new ArrayList();
+	}
+
+	public String toString() {
+		return nome + " " + endereco + " " + contato + " " + cnpj;
+	}
+
+	public void adicionaLivro(Livro l) {
+		livros.add(l);
+	}
+}
+
+class Dicionario extends Livro {
+	String origem;
+	String destino;
+
+	public Dicionario (String t, String a, Editora e, int n,
+		               String o, String d) {
+		super(t, a, e, n);
+		origem = o;
+		destino = d;
+	}
+	public String toString() {
+		return super.toString() +
+			   " " + origem + "->" + destino;
 	}
 }
 
@@ -46,7 +88,9 @@ class Acervo
 				               livros[i].editora + "," + 
 				               livros[i].num_paginas);*/
 			// Chamada do método toString() da classe Livro
-			System.out.println(livros[i]);
+			// Chamada Polimórfica: ora chama o método
+			//de Livro, ora de Dicionário
+			System.out.println(livros[i].toString());
 		}
 	}
 
@@ -69,11 +113,23 @@ public class Principal {
 		// ctotal.editora = "LTC";
 		// ctotal.num_paginas = 800;
 
+		Editora ltc = new Editora("LTC", "Rio de Janeiro", "ltc@ltc", "0001");
+		Editora rocco = new Editora("Rocco", "Sao Paulo", "rocco@rocco", "0002");
+		Editora atlas = new Editora("Atlas", "Tocantins", "atlas@atlas", "0003");
+
 		// Criação dos objetos com uso do construtor
-		Livro ctotal = new Livro("C Total e Completo", "Eber Schimidt", "LTC", 800);
-		Livro enigmado8 = new Livro("Enigma do 8", "Katherine Neville", "Rocco", 678);
+		Livro ctotal = new Livro("C Total e Completo", "Eber Schimidt", ltc, 800);
+		Livro enigmado8 = new Livro("Enigma do 8", "Katherine Neville", rocco, 678);
 		// System.out.println(ctotal.titulo + "," + ctotal.autor + "," + ctotal.editora + "," + ctotal.num_paginas);
 		// System.out.println(enigmado8.titulo + "," + enigmado8.autor + "," + enigmado8.editora + "," + enigmado8.num_paginas);
+
+		Dicionario aurelio = new Dicionario("Dicionario da Lingua Portuguesa", "Aurelio", atlas, 425, "Portugues", "Portugues");
+
+		// ltc.adicionaLivro(ctotal);
+		// rocco.adicionaLivro(enigmado8);
+		// atlas.adicionaLivro(aurelio);
+
+		System.out.println("Quantidade de livros LTC: " + ltc.livros.size());
 
 		// Manipulação direta do objeto acervo
 		// Livro acervo[] = new Livro[1000];
@@ -90,12 +146,16 @@ public class Principal {
 		// System.out.println("Quantidade de paginas: " + paginas);
 
 		// Programando Acervo como uma classe
-		Acervo meuslivros;
+		Acervo meuslivros, acervo_especial;
 		meuslivros = new Acervo(1000);
+		// System.out.println(meuslivros.toString());
 		meuslivros.adicionaLivro(ctotal);
 		meuslivros.adicionaLivro(enigmado8);
 		// Acesso indevido, mas controlado pelo encapsulamento (private)
-		//meuslivros.livros[1005] = ctotal;
+		// meuslivros.livros[1005] = ctotal;
+
+		meuslivros.adicionaLivro(aurelio);
+
 		meuslivros.imprimeAcervo();
 		System.out.println("Quantidade de paginas: " + meuslivros.contaPaginas());
 	}	
