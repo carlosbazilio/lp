@@ -21,7 +21,7 @@ class Livro //extends Object
 		return this.titulo + "," + 
 			   this.autor + "," + 
 			   this.editora.toString() + "," + 
-			   this.num_paginas + " "/* + super.toString()*/;
+			   this.num_paginas;
 	}
 }
 
@@ -31,12 +31,13 @@ class Editora {
 	String contato;
 	String cnpj;
 	//Livro livros[];
-	List livros;
+	// Substituição do tipo vetor por uma lista (coleção genérica de Java)
+	List <Livro>livros;
 
 	public Editora (String n, String e, String c, String cn) {
 		nome = n; endereco = e; contato = c; cnpj = cn;
 		//livros = new Livro[1000];
-		livros = new ArrayList();
+		livros = new ArrayList<Livro>();
 	}
 
 	public String toString() {
@@ -59,6 +60,7 @@ class Dicionario extends Livro {
 		destino = d;
 	}
 	public String toString() {
+		// Redefinição do método com chamada do método na superclasse
 		return super.toString() +
 			   " " + origem + "->" + destino;
 	}
@@ -123,8 +125,14 @@ public class Principal {
 		// System.out.println(ctotal.titulo + "," + ctotal.autor + "," + ctotal.editora + "," + ctotal.num_paginas);
 		// System.out.println(enigmado8.titulo + "," + enigmado8.autor + "," + enigmado8.editora + "," + enigmado8.num_paginas);
 
-		Dicionario aurelio = new Dicionario("Dicionario da Lingua Portuguesa", "Aurelio", atlas, 425, "Portugues", "Portugues");
+		//Dicionario aurelio;
+		Livro aurelio;
+		if (expr)
+			aurelio = new Dicionario("Dicionario da Lingua Portuguesa", "Aurelio", atlas, 425, "Portugues", "Portugues");
+		else
+			aurelio = new Livro(...);
 
+		
 		// ltc.adicionaLivro(ctotal);
 		// rocco.adicionaLivro(enigmado8);
 		// atlas.adicionaLivro(aurelio);
