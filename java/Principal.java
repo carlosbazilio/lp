@@ -1,8 +1,14 @@
 import java.util.*;
 
+interface ILivro {
+	String imprimir();
+	int obtemNumeroPaginas();
+}
+
 // Classe
 // Classes em Java extendem implicitamente a classe Object
-class Livro //extends Object
+//class Livro //extends Object
+class Livro implements ILivro
 {
 	// Atributos da classe
 	String titulo;
@@ -17,11 +23,15 @@ class Livro //extends Object
 	}
 
 	// Redefinição do método toString() herdado da classe Object
-	public String toString() {
+	public String imprimir() {
 		return this.titulo + "," + 
 			   this.autor + "," + 
 			   this.editora.toString() + "," + 
 			   this.num_paginas;
+	}
+
+	public int obtemNumeroPaginas() {
+		return this.num_paginas;
 	}
 }
 
@@ -69,7 +79,7 @@ class Dicionario extends Livro {
 class Acervo
 {
 	// Encapsulamento
-	private Livro livros[];
+	private ILivro livros[];
 	private int num_livros;
 
 	public Acervo (int tam) {
@@ -92,14 +102,14 @@ class Acervo
 			// Chamada do método toString() da classe Livro
 			// Chamada Polimórfica: ora chama o método
 			//de Livro, ora de Dicionário
-			System.out.println(livros[i].toString());
+			System.out.println(livros[i].imprimir());
 		}
 	}
 
 	public int contaPaginas() {
 		int paginas = 0;
 		for (int i=0; i<num_livros; i++) {
-			paginas += livros[i].num_paginas;
+			paginas += livros[i].obtemNumeroPaginas();
 		}
 		return paginas;
 	}
@@ -126,12 +136,7 @@ public class Principal {
 		// System.out.println(enigmado8.titulo + "," + enigmado8.autor + "," + enigmado8.editora + "," + enigmado8.num_paginas);
 
 		//Dicionario aurelio;
-		Livro aurelio;
-		if (expr)
-			aurelio = new Dicionario("Dicionario da Lingua Portuguesa", "Aurelio", atlas, 425, "Portugues", "Portugues");
-		else
-			aurelio = new Livro(...);
-
+		Livro aurelio = new Dicionario("Dicionario da Lingua Portuguesa", "Aurelio", atlas, 425, "Portugues", "Portugues");
 		
 		// ltc.adicionaLivro(ctotal);
 		// rocco.adicionaLivro(enigmado8);
