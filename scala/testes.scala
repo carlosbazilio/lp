@@ -20,6 +20,16 @@ println (cte2(1, 2))
 
 def f = 10
 
+def soma (ind : => Int, lo : Int, hi : Int, term : => Double) : Double = {
+	var temp : Double = 0
+	for (ind <- lo to hi)
+		temp = temp + term
+	temp
+}
+
+var k = 2
+println ("Soma: " + soma (k, 1, 2, 1/k))*/
+
 def fwhile (cond: => Boolean)(corpo: => Unit) : Unit = {
 	if (cond) {
 		corpo
@@ -29,11 +39,11 @@ def fwhile (cond: => Boolean)(corpo: => Unit) : Unit = {
 
 var i = 5
 fwhile (i > 0) {
-	println("Hello nro: " + i + "!!")
+	println("Hello nro: " + i + " !!!")
 	i = i - 1
 }
 
-def tam[T](l : Array[T]) = {
+/*def tam[T](l : Array[T]) = {
 	var cont = 0
 	for (elem <- l)
 		cont = cont + 1
@@ -80,7 +90,6 @@ def fsecond2: PartialFunction[List[Any], Any] = {
 }
 
 println (fsecond2(List(1)))
-*/
 
 def bloco() = {
 	val cte = 5
@@ -94,6 +103,6 @@ def bloco() = {
 
 bloco
 
-/*for (j <- 1 to 3)
+for (j <- 1 to 3)
 	bloco
 */
