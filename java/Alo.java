@@ -1,3 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
+
+interface Remuneravel {
+	double getSalario();
+}
+
 class Aluno {
 	String nome;
 	int matr;
@@ -7,20 +15,24 @@ class Aluno {
 	}
 }
 
-class Bolsista extends Aluno {
+class Bolsista extends Aluno implements Remuneravel {
 	String tipo;
 	private double valor;
 	Professor orientador;
 
 	public double getValor() {
-		return valor;
+		return this.valor;
 	}
+
+ 	public double getSalario() {
+ 		return this.getValor();
+ 	}
 
 	public void setValor(double v) {
 		if (v < orientador.salario)
-			valor = v;
+			this.valor = v;
 		else
-			valor = orientador.salario / 2;
+			this.valor = orientador.salario / 2;
 	}
 
 	public Bolsista (String n,
@@ -32,7 +44,7 @@ class Bolsista extends Aluno {
 		tipo = t; orientador = o;
 		// if (valor > o.salario)
 		// 	valor = o.salario / 2;
-		setValor(v);
+		this.setValor(v);
 	}
 
 
@@ -49,14 +61,36 @@ class Bolsista extends Aluno {
 	}
 }
 
-class Professor {
+class Professor implements Remuneravel {
 	String nome;
 	double salario;
 
 	public Professor (String n, double s) {
-		nome = n; salario = s;
+		this.nome = n; this.salario = s;
+	}
+
+	public double getSalario() {
+		return this.salario;
 	}
 }
+
+
+// class Conta {
+// 	int numConta;
+// 	double saldo;
+
+// 	public void transfere (Conta destino, double s) {
+// 		this.saldo -= s;
+// 		destino.saldo += s;
+// 	}
+// }
+
+// /// Main
+// 	Conta c1 = new Conta(1, 1000);
+// 	Conta c2 = new Conta(2, 200);
+// 	c1.transfere(c2, 300);
+// ///
+
 
 public class Alo {	
 	public static void main(String[] args) {
@@ -67,6 +101,9 @@ public class Alo {
 
 		Professor quinet;
 		quinet = new Professor("Quinet", 7000);
+
+		Professor bazilio;
+		bazilio = new Professor("Bazilio", 700);
 
 		Bolsista thalessa;
 		thalessa = new Bolsista("Thalessa",
@@ -83,11 +120,38 @@ public class Alo {
 		//thalessa.valor = 25000;
 		thalessa.setValor(25000);
 
+		Bolsista marcela;
+		marcela = new Bolsista("Marcela",
+							   3,
+							   "Extensão",
+							   500,
+							   bazilio);
+
+		//objeto.MetododoObjeto(Argumentos);
+
 		System.out.println("Alunos: ");
 		System.out.println(silas.nome); 
 		System.out.println(thalessa.nome);
 		System.out.println(thalessa.getValor());
 		System.out.println(thalessa.orientador.nome);
+
+		List<Remuneravel> remunerados;
+		// remunerados = new ArrayList();
+		remunerados = new LinkedList();
+		remunerados.add(quinet);
+		remunerados.add(bazilio);
+		remunerados.add(thalessa);
+		remunerados.add(marcela);
+
+		double soma = 0;
+		for (Remuneravel r : remunerados)
+			// if (r.tipo == Professor)
+			// 	soma += r.salario; 
+			// else
+			// 	soma += r.valor;
+			soma += r.getSalario();  // Método Polimórfico
+
+		System.out.println("A soma dos salarios é: " + soma);
 	}	
 }
 
