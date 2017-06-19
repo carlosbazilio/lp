@@ -6,12 +6,43 @@ interface Remuneravel {
 	double getSalario();
 }
 
-class Aluno {
+abstract class Pessoa {
 	String nome;
+	String cpf;
+
+	public Pessoa (String n, String c) {
+		this.nome = n; this.cpf = c;
+	}
+
+	public boolean validaCPF() {
+		// Implementação de validação de CPF
+		return true;
+	}
+
+	abstract public boolean validaMatricula();
+}
+
+class Aluno extends Pessoa {
+	//String nome;
 	int matr;
 
-	public Aluno (String n, int m) {
-		nome = n; matr = m;
+	public Aluno (String n, String c, int m) {
+		super(n, c);
+		this.matr = m;
+	}
+
+	public boolean validaMatricula() {
+		return this.matr <= 1000;
+	}
+
+	public boolean podeIrAoCinema() {
+		return false;
+	}
+
+	// Sobrescrita da classe Object
+	// https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#toString()
+	public String toString() {
+		return "Aluno: " + nome + " Matr: " + matr;
 	}
 }
 
@@ -19,6 +50,16 @@ class Bolsista extends Aluno implements Remuneravel {
 	String tipo;
 	private double valor;
 	Professor orientador;
+
+	// public String toString() {
+	// 	return "Bolsista: " + nome + " Matr: " + matr +
+	// 	" Valor bolsa: " + valor;
+	// }
+
+	public String toString() {
+		return "Bolsista: " + super.toString() +
+		" Valor bolsa: " + valor;
+	}
 
 	public double getValor() {
 		return this.valor;
@@ -35,12 +76,18 @@ class Bolsista extends Aluno implements Remuneravel {
 			this.valor = orientador.salario / 2;
 	}
 
+	// Sobrescrita do método de Aluno
+	public boolean podeIrAoCinema() {
+		return true;
+	}
+
 	public Bolsista (String n,
+					 String c,
 		             int m,
 		             String t,
 		             double v,
 		             Professor o) {
-		super(n, m);
+		super(n, c, m);
 		tipo = t; orientador = o;
 		// if (valor > o.salario)
 		// 	valor = o.salario / 2;
@@ -49,28 +96,38 @@ class Bolsista extends Aluno implements Remuneravel {
 
 
 	public Bolsista (String n,
+					 String c,
 		             int m,
 		             String t,
 		             double v,
 		             String n_orient,
+		             String cpf_orient,
+		             int matric_orient,
 		             double s_orient) {
 		//super(n, m);
 		//tipo = t; valor = v;
 		//orientador = new Professor(n_orient, s_orient);
-		this(n, m, t, v, new Professor(n_orient, s_orient));
+		this(n, c, m, t, v, new Professor(n_orient, cpf_orient, matric_orient, s_orient));
 	}
 }
 
-class Professor implements Remuneravel {
-	String nome;
+class Professor extends Pessoa implements Remuneravel {
+	//String nome;
+	int matr;
 	double salario;
 
-	public Professor (String n, double s) {
-		this.nome = n; this.salario = s;
+	public Professor (String n, String c, int m, double s) {
+		super(n, c);
+		this.matr = m;
+		this.salario = s;
 	}
 
 	public double getSalario() {
 		return this.salario;
+	}
+
+	public boolean validaMatricula() {
+		return this.matr > 1000;
 	}
 }
 
@@ -95,18 +152,19 @@ class Professor implements Remuneravel {
 public class Alo {	
 	public static void main(String[] args) {
 		Aluno silas;
-		silas = new Aluno("Silas", 1);
+		silas = new Aluno("Silas", "0001", 1);
 		// silas.nome = "Silas";
 		// silas.matr = 1;
 
 		Professor quinet;
-		quinet = new Professor("Quinet", 7000);
+		quinet = new Professor("Quinet", "0002", 1001, 7000);
 
 		Professor bazilio;
-		bazilio = new Professor("Bazilio", 700);
+		bazilio = new Professor("Bazilio", "0003", 1002, 700);
 
 		Bolsista thalessa;
 		thalessa = new Bolsista("Thalessa",
+								"0004",
 			                    2,
 			                    "Monitoria",
 			                    15000,
@@ -122,6 +180,7 @@ public class Alo {
 
 		Bolsista marcela;
 		marcela = new Bolsista("Marcela",
+							   "0005",
 							   3,
 							   "Extensão",
 							   500,
@@ -135,6 +194,9 @@ public class Alo {
 		System.out.println(thalessa.getValor());
 		System.out.println(thalessa.orientador.nome);
 
+		System.out.println(silas); 
+		System.out.println(thalessa);
+		
 		List<Remuneravel> remunerados;
 		// remunerados = new ArrayList();
 		remunerados = new LinkedList();
