@@ -92,6 +92,8 @@ class Bolsista extends Aluno implements Remuneravel {
 		// if (valor > o.salario)
 		// 	valor = o.salario / 2;
 		this.setValor(v);
+		// Implementação da navegação de Professor para Bolsista
+		this.orientador.bolsistas.add(this);
 	}
 
 
@@ -115,11 +117,15 @@ class Professor extends Pessoa implements Remuneravel {
 	//String nome;
 	int matr;
 	double salario;
+	// Lista criada caso desejássemos que a navegação
+	//fosse também de professor para bolsista
+	List <Bolsista> bolsistas;
 
 	public Professor (String n, String c, int m, double s) {
 		super(n, c);
 		this.matr = m;
 		this.salario = s;
+		this.bolsistas = new ArrayList();
 	}
 
 	public double getSalario() {
