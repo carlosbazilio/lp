@@ -81,6 +81,10 @@ class Bolsista extends Aluno implements Remuneravel {
 		return true;
 	}
 
+	public void setOrientador (Professor p) {
+		this.orientador = p;
+	}
+
 	public Bolsista (String n,
 					 String c,
 		             int m,
@@ -180,6 +184,9 @@ public class Alo {
 		// thalessa.tipo = "Monitoria";
 		// thalessa.valor = 5000;
 		// thalessa.orientador = "Quinet";
+
+		//thalessa.orientador = bazilio;
+		thalessa.setOrientador(bazilio);
 
 		//thalessa.valor = 25000;
 		thalessa.setValor(25000);
