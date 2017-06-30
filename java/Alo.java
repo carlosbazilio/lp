@@ -226,6 +226,9 @@ public class Alo {
 			// 	soma += r.valor;
 			soma += r.getSalario();  // Método Polimórfico
 
+		// Soma usando Streams do Java 8
+		double soma2 = remunerados.stream().mapToDouble(x -> x.getSalario()).sum();
+
 		System.out.println("A soma dos salarios é: " + soma);
 	}	
 }
