@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <!-- 
 This document contains a suggestion of an ordinary article structure in XML
 Author: Carlos Bazilio (carlosbazilio@id.uff.br)
@@ -16,7 +18,7 @@ Hints:
 	<abstract description="Contains a summary of the whole work">
 	</abstract>
 	
-	<introduction>
+	<introduction description="Briefly presents and motivates the addressed problem and the proposed solution">
 		<motivation description="Introduces and explains the problem">
 		</motivation>
 
@@ -39,7 +41,7 @@ Hints:
 	<basic-concepts description="Presents all of the concepts required to understand the proposal">
 	</basic-concepts>
 
-	<development>
+	<development description="Describes how the problem is solved">
 		<methodology description="Contains the process used during the developed work">
 		</methodology>
 
