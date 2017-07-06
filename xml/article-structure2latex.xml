@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="article-xml2latex.xsl"?>
+
+<!-- 
+This document contains a suggestion of an ordinary article structure in Latex
+Author: Carlos Bazilio (carlosbazilio@id.uff.br)
+
+Hints:
+(1) The whole text, a section or a single paragraph *must* contain an introduction, a development and a conclusion
+(2) Due to hint (1), a single line paragraph is forbidden
+(3) Also due to hint (1), a single paragraph section is forbidden
+(4) Tips for writing in English (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3935133/)
+(5) Tips for scientific writing in English (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5175292/)
+-->
+
+<article>
+	<title description="A single phrase abstract. It is the unique portion where a kind of mistery or joke suits"/>
+
+	<abstract description="Contains a summary of the whole work">
+	</abstract>
+	
+	<introduction description="Briefly presents and motivates the addressed problem and the proposed solution">
+		<motivation description="Introduces and explains the problem">
+		</motivation>
+
+		<problem description="Describes the addressed problem">
+		</problem>
+
+		<solution description="Explains briefly how the problem is solved">
+		</solution>
+
+		<contribution description="Explains why this solution is awesome">
+		</contribution>
+
+		<article-structure description="Briefly describes each of the following sections">
+		</article-structure>
+	</introduction>
+
+	<related-work description="Lists works closely related to this proposal" required="no" location="Here or between results and conclusion section">
+	</related-work>
+
+	<basic-concepts description="Presents all of the concepts required to understand the proposal">
+	</basic-concepts>
+
+	<development description="Describes how the problem is solved">
+		<methodology description="Contains the process used during the developed work">
+		</methodology>
+
+		<problem-solving description="Contains the steps taken during the development of the work">
+		</problem-solving>
+
+		<finding description="Highlights relevant topics in the proposed work">
+		</finding>
+	</development>
+
+	<results description="Describes results, findings, use cases and anything else that demonstrates problem resolution">
+	</results>
+
+	<conclusion description="It could be seen as an extended abstract where the whole work is briefly described">
+		<problem>
+		</problem>
+
+		<development>
+		</development>
+
+		<finding>
+		</finding>
+
+		<final-considerations>
+		</final-considerations>
+	</conclusion>
+
+	<references description="Contains descriptions of all citations found in the article">
+	</references>
+</article>
+
+
