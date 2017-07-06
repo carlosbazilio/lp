@@ -10,8 +10,8 @@ abstract class Pessoa {
 	String nome;
 	String cpf;
 
-	public Pessoa (String n, String c) {
-		this.nome = n; this.cpf = c;
+	public Pessoa (String nome, String c) {
+		this.nome = nome; this.cpf = c;
 	}
 
 	public boolean validaCPF() {
