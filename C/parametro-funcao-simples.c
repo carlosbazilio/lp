@@ -26,10 +26,10 @@ float harmonico(int lo, int hi, float f(int)) {
 	return temp;
 }
 
-typedef float (* tfuncao)(int);
+//typedef float (* tfuncao)(int);
 
 main() {
-	tfuncao vet[] = {frac, frac2};
+	//tfuncao vet[] = {frac, frac2};
 
 	printf("Valor do harmonico: %f\n", harmonico(1, 100, frac2));
 }
