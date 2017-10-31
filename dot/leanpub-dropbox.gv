@@ -1,0 +1,10 @@
+
+digraph G {
+	edge [color=blue];
+	node [style=filled,color="gray"];
+    Local -> Dropbox [label="(1)"];
+    Dropbox -> Local [label="(6)"];
+    Leanpub -> Dropbox [label="(3),(5)"];
+    Dropbox -> Leanpub [label="(4)"];
+    Local -> Leanpub [style=dotted,label="(2)"];
+}
