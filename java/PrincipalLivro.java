@@ -116,7 +116,7 @@ class Acervo
 }
 
 
-public class Principal {	
+public class PrincipalLivro {	
 	public static void main(String[] args) {
 		// Objeto ou instância
 		// Livro ctotal = new Livro();
