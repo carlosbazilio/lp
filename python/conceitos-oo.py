@@ -4,8 +4,9 @@ Descricao:
 Este programa ilustra: 
 * Uma hierarquia de classes em Python e como 
 classes abstratas podem ser implementadas
-* Definição e uso de propriedades para
+* Definicao e uso de propriedades para
 encapsulamento de atributos.
+* Tratamento de Excecoes
 
 Python disponibiliza o modulo abc para implementar 
 classes abstratas
@@ -31,6 +32,10 @@ class Lampada(Iluminavel):
 		self.potencia = p
 		self.tecnologia = t
 		self._acesa = False
+
+	def __str__(self):
+		return 'Lampada %s com potencia de %s watts' % \
+		(self.tecnologia, self.potencia)
 
 	@property
 	def acesa(self):
@@ -60,6 +65,13 @@ class Luminaria(Iluminavel):
 	def acesa(self, valor):
 		for l in self.lampadas:
 			l.acesa = valor
+
+	def listagem5Primeiras(self):
+		for i in range(5):
+			try:
+				print self.lampadas[i]
+			except IndexError:
+				print "Empty"
 
 l1 = Lampada("led", 60)
 l2 = Lampada("fluorescente", 100)
