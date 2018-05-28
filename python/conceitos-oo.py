@@ -1,9 +1,11 @@
 '''
 Autor: Carlos Bazilio
 Descricao:
-Este programa ilustra uma hierarquia de classes
-em Python e como classes abstratas podem ser
-implementadas
+Este programa ilustra: 
+* Uma hierarquia de classes em Python e como 
+classes abstratas podem ser implementadas
+* Definição e uso de propriedades para
+encapsulamento de atributos.
 
 Python disponibiliza o modulo abc para implementar 
 classes abstratas
@@ -17,53 +19,47 @@ class Iluminavel:
 	__metaclass__ = ABCMeta
 
 	@abstractmethod
-	def acender(self):
+	def acesa(self, valor):
 		pass
 
 	@abstractmethod
-	def apagar(self):
-		pass
-
-	@abstractmethod
-	def status(self):
+	def acesa(self):
 		pass
 
 class Lampada(Iluminavel):
 	def __init__(self, t, p):
 		self.potencia = p
 		self.tecnologia = t
-		self.acesa = False
+		self._acesa = False
 
-	def acender(self):
-		self.acesa = True
+	@property
+	def acesa(self):
+		return self._acesa
 
-	def apagar(self):
-		self.acesa = False
-
-#	def status(self):
-#		return self.acesa
+	@acesa.setter
+	def acesa(self, valor):
+		#print "Dentro de acesa"
+		self._acesa = valor
 
 class Luminaria(Iluminavel):
 	def __init__(self):
 		self.lampadas = []
-		self.acesa = False
+		self._acesa = False
 
 	def adicionaLampada(self, l):
 		self.lampadas.append(l)
 
-	def acender(self):
-		for l in self.lampadas:
-			l.acender()
-
-	def apagar(self):
-		for l in self.lampadas:
-			l.apagar()
-
-	def status(self):
+	@property
+	def acesa(self):
 		status_inicial = False
 		for l in self.lampadas:
-			status_inicial = status_inicial or l.status()
+			status_inicial = status_inicial or l.acesa
 		return status_inicial
+
+	@acesa.setter
+	def acesa(self, valor):
+		for l in self.lampadas:
+			l.acesa = valor
 
 l1 = Lampada("led", 60)
 l2 = Lampada("fluorescente", 100)
