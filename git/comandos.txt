@@ -1,0 +1,64 @@
+States:
+Diretório Local | Stage | Repositório
+
+Commands:
+git init // Create a repository; folder /.git contains all of the config of git
+git config --global user.name bazilio // Uses the same name of github user
+git config --global user.email carlosbazilio@gmail.com
+git status // To verify the status of files in a git directory
+
+git branch <name> // Create a branch called <name>
+git branch -d <name> // Deletes a branch called <name>
+
+git merge <name> // Merge <name> branch with the current one
+
+git checkout -- <files> // Copy files back from Stage to Diretório
+git checkout -b <new-branch-name> // Create a new branch based on the current branch
+git checkout <branch-name> // Switch to branch-name
+
+git tag v.1.0.0 // Create a tag version "v.1.0.0" in order to be regarded on a git reset command, for instance
+
+git log // History of the commands
+git log --name-status // Lista nome dos arquivos modificados
+git reset <hash number from log> // Recover an old version of stage; we need to run checkout to update local folder (Diretório)
+git reset --hard <hash number from log> // Do the same as previous without requiring checkout
+git clone <url> // Copy from Repositório to Diretório local
+
+git remote -v // List the remote projects (Repositórios)
+git remote add origin https://github.com/try-git/try_git.git // Add a remote repository and name it origin
+git push -u origin master
+
+git add <files> // Add files to the repository
+git commit -am <comment> // Add files to Stage and confirm the modifications with comment
+git push // Copy modified files to the remote repository
+
+git diff HEAD // Get the differences in the repository from our last commit
+git diff --staged // Get the differences in the staged from our last commit
+
+git rm <files> // Remove files from Diretório and Stage (?)
+
+git ignore
+https://www.atlassian.com/git/tutorials/gitignore
+
+git add -f <files> // Forçar adição de arquivos ignorados
+
+git pull // fetch + merge; Usado para mesclar branches
+
+Documentação:
+https://git-scm.com/docs
+
+Aulas:
+https://classroom.github.com/
+
+Livro:
+http://git-scm.com/book/en/v2
+
+Tutoriais:
+http://rogerdudler.github.io/git-guide/index.pt_BR.html
+http://pcottle.github.io/learnGitBranching/ 
+https://try.github.io/levels/1/challenges/1 (Curso de 15 min)
+https://githowto.com/ 
+
+Ver:
+gitflow
+https://github.com/wl4dek/workshopUFF
