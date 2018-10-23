@@ -24,7 +24,7 @@ git pull // fetch + merge; Usado para mesclar branches
 git rm <files> // Remove files from Diretório and Stage (?)
 git checkout -- <files> // Copy files back from Stage to Diretório
 
-=> Informating 
+=> Inspecting 
 git status // To verify the status of files in a git directory
 git log // History of commands
 git log --name-status // History of commands with filenames 
