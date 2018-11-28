@@ -8,3 +8,4 @@ pantograma' frase alfabeto
     | frase == [] = False
     | otherwise = pantograma' (filter (/= (head frase)) frase) (filter (/= (head frase)) alfabeto)
 
+
