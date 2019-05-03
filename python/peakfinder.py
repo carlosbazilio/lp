@@ -1,8 +1,9 @@
+# Funcao para buscar algum pico num vetor de numeros
 def findpeak(numbers):
     if len(numbers) == 1:
     	return numbers[0]
     else:
-        # Garantir que mais que 2 elemento (+1 e -1)
+        # Garantir que mais que 2 elementos (+1 e -1)
         #passem para a parte mais geral
         if len(numbers) == 2:
             return max (numbers[0], numbers[1])
