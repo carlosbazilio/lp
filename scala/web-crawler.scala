@@ -19,7 +19,7 @@ object Crawler {
 }
 
 var links = List(args(0))
-var qtd_acessos = 10;
+var qtd_acessos = args(1).toInt;
 while (links.size > 0 && qtd_acessos > 0) {
 	val link = links.head
 	println("Processando: " + link)
