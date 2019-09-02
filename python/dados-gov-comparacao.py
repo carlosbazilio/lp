@@ -3,6 +3,8 @@
 # Jairo Alves, Julho/2017
 # Acesso a dataset de UBS em funcionamento do site dados.gov.br
 # http://dados.gov.br/dataset/mspainelsage_101
+# 
+# Adaptação, Carlos Bazilio, Setembro/2019
 
 import requests 
 
