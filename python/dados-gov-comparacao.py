@@ -6,18 +6,24 @@
 
 import requests 
 
-url = 'http://dados.gov.br/api/action/datastore_search'
-cidades = ['Maca', 
+#url = 'http://dados.gov.br/api/action/datastore_search'
+url = 'http://sage.saude.gov.br/paineis/ubsFuncionamento/lista.php?output=json'
+cidades = ['Macaé', 
            'Rio Bonito', 
            'Rio das Ostras',
            'Rio de Janeiro',
-           'Remgio'] # Lista de Cidades desejadas
+           'Petrópolis'] # Lista de Cidades desejadas
 
 
-def extrai_campos(registro):
+#def extrai_campos(registro):
 #    Retorna nome, bairro, rua, cidade, estado do dado
-    return registro['no_fantasia'], registro['no_bairro'], \
-           registro['no_logradouro'], registro['cidade'], registro['uf']
+#    return registro['no_fantasia'], registro['no_bairro'], \
+#           registro['no_logradouro'], registro['cidade'], registro['uf']
+
+def extrai_campos(registro, metadados):
+#    Retorna nome, bairro, rua, cidade, estado do dado
+# Usar Metadados !!!
+    return registro[4], registro[6], registro[5], registro[2], registro[1]
 
 def esp_horizontal(caractere='-', compr=40):
 #    Espacamento horizontal
@@ -41,12 +47,16 @@ def compara_ubs(cidades, verboso = 0):
         )
         
         resp = requests.get(url=url, params=params)
-        dados = resp.json()['result']['records']
+        #dados = resp.json()['result']['records']
+        respjson = resp.json()
+        dados = respjson['resultset']
+        metadados = respjson['metadata']
         bairros = set()
         num_postos = 0
         
         for registro in dados:
-            nome, bairro, rua, cidade_lida, estado = extrai_campos(registro)
+            #nome, bairro, rua, cidade_lida, estado = extrai_campos(registro)
+            nome, bairro, rua, cidade_lida, estado = extrai_campos(registro, metadados)
             if(cidade_lida != cidade):
                 continue
             num_postos = num_postos + 1
@@ -63,5 +73,5 @@ def compara_ubs(cidades, verboso = 0):
               '{:>12}'.format(len(bairros)) )
 esp_horizontal('-', 42)
 
-esp_vertical(4)
+#esp_vertical(4)
 compara_ubs(cidades)
