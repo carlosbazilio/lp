@@ -29,6 +29,6 @@ public class Luminaria implements Iluminavel /*extends Object*/ {
 	}
 
 	public Luminaria () {
-		lampadas = new ArrayList();
+		lampadas = new ArrayList<Lampada>();
 	}
 }
