@@ -1,3 +1,6 @@
+// Classe = Struct + Funções
+// Objeto = Variável Struct + Funções
+
 import java.util.*;
 
 public class PrincipalLampada {
