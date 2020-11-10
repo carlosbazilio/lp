@@ -1,0 +1,66 @@
+States:
+Diretório Trabalho | Stage (Index) | Repositório (HEAD) 
+
+Commands:
+git <command> --help // List a man help of the git command 
+
+=> Initializing
+git init // Create a repository; folder /.git contains all of the config of git
+git config --global user.name bazilio // Uses the same name of github user
+git config --global user.email carlosbazilio@gmail.com
+git clone <url> // Copy from Repositório to Diretório local
+git remote -v // List the remote projects (Repositórios)
+git remote add origin https://github.com/try-git/try_git.git // Add a remote repository and name it origin
+git ignore
+https://www.atlassian.com/git/tutorials/gitignore
+
+=> Doing The Basics
+git add <files> // Add files to the repository
+git add -f <files> // Add ignored files (.gitignore)
+git commit -am <comment> // Add files to Stage and confirm the modifications with comment
+git push -u origin master // Copy modified files to the remote repository
+git push // Copy modified files to the remote repositor using default parameters 
+git pull // fetch + merge; Usado para mesclar branches
+git rm <files> // Remove files from Diretório and Stage (?)
+git checkout -- <files> // Copy files back from Stage to Diretório
+
+=> Inspecting 
+git status // To verify the status of files in a git directory
+git log // History of commands
+git log --name-status // History of commands with filenames 
+git diff HEAD // Get the differences in the repository from our last commit
+git diff --staged // Get the differences in the staged from our last commit
+
+=> Branching 
+git branch <name> // Create a branch called <name>
+git branch -d <name> // Deletes a branch called <name>
+git merge <name> // Merge <name> branch with the current one
+git checkout -b <new-branch-name> // Create a new branch based on the current branch
+git checkout <branch-name> // Switch to branch-name
+
+=> Versioning 
+git tag v.1.0.0 // Create a tag version "v.1.0.0" in order to be regarded on a git reset command, for instance
+
+git stash // Save the current dirty version of working directory to a stack of modifications. Turn local status empty
+git stash apply // Recover from stack last dirty version saved with stash
+git stash list // List all saved dirty versions
+
+git reset <hash number from log> // Recover an old version of stage; we need to run checkout to update local folder (Diretório)
+git reset --hard <hash number from log> // Do the same as previous without requiring checkout
+
+Docs:
+https://git-scm.com/docs
+
+Book:
+http://git-scm.com/book/en/v2
+
+Tutorials:
+http://rogerdudler.github.io/git-guide/index.pt_BR.html (Simple guide)
+https://learngitbranching.js.org/ (Interactive learning git)
+http://git-school.github.io/visualizing-git/ (A visualizing tool)
+https://try.github.io/levels/1/challenges/1 (15 min course)
+https://githowto.com/ 
+
+See also:
+gitflow
+https://classroom.github.com/
