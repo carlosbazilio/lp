@@ -1,3 +1,6 @@
+// Classe = Struct + Funções
+// Objeto = Variável Struct + Funções
+
 import java.util.*;
 
 public class PrincipalLampada {
@@ -53,6 +56,3 @@ public class PrincipalLampada {
 		System.out.println (l.getQtdLampadasAbstratas());
 	}
 }
-
-
-

@@ -50,6 +50,3 @@ public class Ambiente /* extends Object */ {
 	}
 }
 
-
-
-
