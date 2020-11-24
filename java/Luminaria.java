@@ -4,6 +4,20 @@ import java.util.*;
 public class Luminaria implements Iluminavel /*extends Object*/ {
 	List<Lampada> lampadas;
 
+	public boolean estaoAcesas() {
+		for (Lampada l : lampadas)
+			if (! l.getAcesa())
+				return false;
+		return true;
+	}
+
+	public int getPotenciaInstantanea () {
+		int consumo = 0;
+		for (Lampada l : lampadas)
+			consumo = consumo + l.getPotenciaInstantanea();
+		return consumo;
+	}
+
 	public void acender () {
 		for (Lampada l : lampadas)
 			l.acender();
@@ -16,7 +30,7 @@ public class Luminaria implements Iluminavel /*extends Object*/ {
 
 	public String toString() {
 		String saida = "Esta luminária possui " +
-		lampadas.size() + " lâmpadas, e seus estados são: ";
+		lampadas.size() + " lâmpadas, e seus estados são: \n";
 
 		for (Lampada l : lampadas)
 			saida = saida + l.toString() + "\n";
@@ -29,6 +43,6 @@ public class Luminaria implements Iluminavel /*extends Object*/ {
 	}
 
 	public Luminaria () {
-		lampadas = new ArrayList();
+		lampadas = new ArrayList<Lampada>();
 	}
 }

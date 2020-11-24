@@ -21,16 +21,38 @@ public class PrincipalLampada {
 
 		Lampada l3 = new Lampada(false, "fluorescente", 100, true);
 
-		List <Iluminavel> ambiente = new ArrayList();
+		// List <Iluminavel> ambiente = new ArrayList();
 
-		ambiente.add(l3);
-		ambiente.add(lumi);
+		// ambiente.add(l3);
+		// ambiente.add(lumi);
 
-		// Polimorfismo
-		for (Iluminavel i : ambiente) 
-			i.acender(); // Método Polimórfico
+		// // Polimorfismo
+		// for (Iluminavel i : ambiente) 
+		// 	i.acender(); // Método Polimórfico
 
-		for (Iluminavel i : ambiente)
-			System.out.println(i.toString());
+		// for (Iluminavel i : ambiente)
+		// 	System.out.println(i.toString());
+
+		Ambiente ambiente = new Ambiente();
+
+		ambiente.adicionaIluminacao(l3);
+		ambiente.adicionaIluminacao(lumi);
+
+		ambiente.acender();
+
+		System.out.println(ambiente);
+
+		System.out.println("Consumo instantâneo do ambiente: " + 
+			ambiente.calculaConsumoInstantaneo());
+
+		Lampada l4 = new Lampada(false, "fluorescente", 100, true);
+
+		System.out.println (l4.toString());
+		//System.out.println (l4.getQtdLampadasAbstratas());
+		System.out.println (LampadaAbstrata.getQtdLampadasAbstratas());
+		System.out.println (l.getQtdLampadasAbstratas());
 	}
 }
+
+
+
