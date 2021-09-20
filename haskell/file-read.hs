@@ -10,11 +10,14 @@ import Data.Char;
 
 castString = read::String->[(Int, Int, Int)]
 
-run :: IO (Int, Int, [(Int,Int,Int)])
+-- run :: IO (Int, Int, [(Int,Int,Int)])
 run = do
-	contents <- readFile "text.txt"   -- use '<-' here so that 'contents' is a String
-	let [a,b,c] = lines contents      -- split on newlines
-	let firstLine  = digitToInt $ head a
-	let secondLine = digitToInt $ head b
-	let thirdLine  = castString c    -- this reads a list of Int-tuples
-	return (firstLine, secondLine, thirdLine)
+    contents <- readFile "text.txt"   -- use '<-' here so that 'contents' is a String
+    let [a,b,c] = lines contents      -- split on newlines
+    let firstLine  = digitToInt $ head a
+    let secondLine = digitToInt $ head b
+    let thirdLine  = castString c    -- this reads a list of Int-tuples
+    putStrLn $ show $ somaTuplas thirdLine
+
+somaTuplas tuplas = foldl (\ac (x,y,z) -> ac + x + y + z) 0 tuplas
+
