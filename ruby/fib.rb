@@ -1,10 +1,10 @@
 #iterativo
 def fib_i(n)
 	first, second = 0, 1
-    n.times do
-      first, second = second, first + second
-    end
-   	first
+	n.times do
+		first, second = second, first + second
+	end
+	first
 end
 
 #usando memoization
