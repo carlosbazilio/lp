@@ -1,7 +1,7 @@
 #consumindo uma api Rest
 #endpoint obtida atraves do link https://github.com/public-apis/public-apis
 
-require 'rest-client' #no console rodar 'gem install rest-client' e em seguida 'bundle'
+require 'rest-client' #no console, rodar 'gem install rest-client'
 require 'json'
 
 endpoint = "http://universities.hipolabs.com/search?country=Brazil"
