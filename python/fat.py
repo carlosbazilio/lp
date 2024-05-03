@@ -4,4 +4,4 @@ def fat (x):
     else:
         return x * fat(x-1)
 
-print fat(5)
+print(fat(5))

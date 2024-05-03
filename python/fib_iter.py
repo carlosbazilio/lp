@@ -9,5 +9,5 @@ def fib(n):
 
 import sys
 
-print fib(int(sys.argv[1]))
+print (fib(int(sys.argv[1])))
 

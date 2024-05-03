@@ -40,3 +40,7 @@ class Color(object):
         return self.red == other_color.red and self.green == \
         other_color.green and self.blue == other_color.blue
 
+
+
+
+

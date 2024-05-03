@@ -31,41 +31,57 @@ class Lampada(object):
 		self._acesa = a
 		self._funcionando = True
 
-	'''def __str__(self):
+	def __str__(self):
 		saida = 'Lampada %s com potencia de %s watts\n' % \
 		(self.tecnologia, self.potencia)
-		#saida = saida + super(Lampada, self).__str__()
-		return saida'''
+		return saida
 
 	#get
 	@property
 	def acesa(self):
-		#print("Dentro do metodo acesa!")
+		print("Dentro do metodo acesa!")
 		return self._acesa
 
 	#set
 	@acesa.setter
 	def acesa(self, valor):
-		#print("Dentro do metodo set de acesa!")
+		print("Dentro do metodo set de acesa!")
 		if (self._funcionando):
 			self._acesa = valor
+
+	#get
+	@property
+	def funcionando(self):
+		print("Dentro do metodo funcionando!")
+		return self._funcionando
+
+	#set
+	@funcionando.setter
+	def funcionando(self, valor):
+		print("Dentro do metodo set de funcionando!")
+		self._funcionando = valor
+		if (not valor):
+			self._acesa = False
+
+	def setCor(self, valor):
+		self._cor = valor
+
+	def getCor(self):
+		return self._cor
 
 
 class Luminaria(object):
 
-	def __init__(self):
+	def __init__(self, a = False):
 		self.lampadas = []
-		self.acesa = False
+		self.acesa = a
 
+	#def adiciona(self, l):
+	#	self.lampadas.append(l)
 
-class AlunoMestrado(object):
+	def adiciona(self, t, p, a):
+		self.lampadas.append(Lampada(t, p, a))
 
-	# Atributo de classe
-	codcurso = 25
-
-	def __init__(self, n, m):
-		# Atributos de instancia
-		self.nome = n;
-		self.matricula = m;
+	
 
 

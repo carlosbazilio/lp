@@ -1,6 +1,6 @@
 def harmonico(inicio, fim, f):
 	soma = 0
-	for i in xrange(inicio,fim+1):
+	for i in range(inicio,fim+1):
 		soma = soma + f(i)
 	return soma
 

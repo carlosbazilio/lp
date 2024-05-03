@@ -9,3 +9,17 @@ def fib (x):
 import sys
 
 print (fib(int(sys.argv[1])))
+
+
+# fib (4)
+# fib_aux (4, 0, 1)
+# fib_aux (3, 1, 1)
+# fib_aux (2, 1, 2)
+# fib_aux (1, 2, 3)
+# 
+# 0 1 1 2 3 5 8 ...
+
+
+
+
+

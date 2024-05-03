@@ -20,6 +20,10 @@ from abc import ABCMeta, abstractmethod
 class Iluminavel:
 	__metaclass__ = ABCMeta
 
+	def __init__(self, t):
+		self.teste = t
+		pass
+
 	# Metodo abstrato
 	@abstractmethod
 	def acesa(self, valor):
@@ -29,6 +33,7 @@ class Iluminavel:
 	def acesa(self):
 		pass
 
+	@abstractmethod
 	def padrao(self):
 		return "Comportamento padrao"
 
@@ -49,13 +54,13 @@ class Lampada(Iluminavel):
 	# Definicao de uma propriedade (metodo get)
 	@property
 	def acesa(self):
-		print "Dentro do get de acesa"
+		print ("Dentro do get de acesa")
 		return self._acesa
 
 	# Definicao de uma propriedade (metodo set)
 	@acesa.setter
 	def acesa(self, valor):
-		print "Dentro do set de acesa"
+		print ("Dentro do set de acesa")
 		self._acesa = valor
 
 	def padrao(self):
@@ -110,10 +115,19 @@ class Luminaria(Iluminavel):
 		for i in range(5):
 			# Tratando excecoes
 			try:
-				print self.lampadas[i]
+				print (self.lampadas[i])
 			except IndexError:
-				print "Empty"
+				print ("Empty")
 
 l1 = Lampada("led", 60)
 l2 = Lampada("fluorescente", 100)
 l3 = Lampada("incandescente", 120)
+
+l1.acesa = True
+
+print(l1.__str__())
+
+print(l1.padrao())
+
+l4 = Iluminavel(10)
+
