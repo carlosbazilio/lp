@@ -1,0 +1,3 @@
+interface Exibivel {
+	void exibe();
+}

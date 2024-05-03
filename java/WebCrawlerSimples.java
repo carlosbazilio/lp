@@ -42,7 +42,7 @@ public class WebCrawlerSimples {
         System.setProperty("sun.net.client.defaultReadTimeout",    "10000");
 		
         // initial web page
-        String s = args[0];
+        String s = "http://www.uff.br";
 		
         // list of web pages to be examined
         Queue<String> q = new LinkedList<String>();

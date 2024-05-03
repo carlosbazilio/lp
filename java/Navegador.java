@@ -1,4 +1,4 @@
-package br.uff.puro.comp.lp.exemplos;
+//package br.uff.puro.comp.lp.exemplos;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,8 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
-public class Navegador extends MouseAdapter implements ActionListener, HyperlinkListener {
+public class Navegador extends MouseAdapter 
+					   implements ActionListener, HyperlinkListener {
 	private JEditorPane conteudo;
 	private JTextField endereco;
 	private JLabel url;
@@ -28,7 +29,7 @@ public class Navegador extends MouseAdapter implements ActionListener, Hyperlink
 		endereco = new JTextField();
 		pCabecalho.add("Center", endereco);
 
-		// Conteúdo do browser
+		// ConteÃºdo do browser
 		setConteudo(new JEditorPane());
 		getConteudo().setEditable(false);
 		JScrollPane pConteudo = new JScrollPane(getConteudo());
@@ -65,6 +66,7 @@ public class Navegador extends MouseAdapter implements ActionListener, Hyperlink
 
 	public void actionPerformed(ActionEvent arg0) {
 		disparaEndereco(arg0.getActionCommand());
+		status.setText("Acessando url: " + arg0.getActionCommand());
 	}
 
 	public void hyperlinkUpdate(HyperlinkEvent arg0) {
@@ -80,14 +82,14 @@ public class Navegador extends MouseAdapter implements ActionListener, Hyperlink
 			getConteudo().setPage(url);
 			endereco.setText(url);
 		} catch (IOException e) {
-			System.out.println("Erro na exibição da página !!!");
+			System.out.println("Erro na exibiÃ§Ã£o da pÃ¡gina !!!");
 		}
 	}
 	
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// Modal dialog with OK/cancel and a text field
-	    String text = JOptionPane.showInputDialog(janela, "Forneça a url desejada: " );
+	    String text = JOptionPane.showInputDialog(janela, "ForneÃ§a a url desejada: " );
 	    if (text != null) {
 	        this.disparaEndereco(text);
 	    }
