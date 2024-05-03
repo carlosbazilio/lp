@@ -1,0 +1,1 @@
+int fat (int x);
