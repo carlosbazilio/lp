@@ -1,11 +1,11 @@
--- data Pub = Livro Integer [Char] [Char] Double Double deriving (Show)
-
 data Pub = Livro { cod :: Integer, 
                    titulo :: [Char], 
                    autor :: [Char],
                    preco :: Double,
                    qtd :: Double
                  } deriving (Show)    
+
+-- data Pub = Livro Integer [Char] [Char] Double Double deriving (Show)
 
 livros :: [Pub]
 livros = [Livro 1 "Eu sou Malala" "Malala Yousafzai" 50.0 2.0, 

@@ -18,6 +18,6 @@ getValorEstoque (id, titulo, autor, preco, qtd) = preco * qtd
 somalivros :: [Livro] -> Double
 somalivros lista = foldl (\x y -> x + getValorEstoque y) 0 lista
 
-main = 
-    print (foldl (\x (id1, titulo1, autor1, preco1, qtd1) -> (preco1 * qtd1) + x) 0 livros)
+-- main = 
+--     print (foldl (\x (id1, titulo1, autor1, preco1, qtd1) -> (preco1 * qtd1) + x) 0 livros)
 

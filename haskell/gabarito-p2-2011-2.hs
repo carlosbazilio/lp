@@ -1,4 +1,4 @@
-import Char
+import Data.Char
 
 -- 2a) Questão
 
@@ -66,5 +66,7 @@ produto cod ((c, p, v):resto)
 valor [] _ = 0
 valor ((cod, qtd) : resto_carrinho) estoque =
 	(preco (produto cod estoque) * qtd) + (valor resto_carrinho estoque)
+
+valor' carrinho estoque = foldl (+) 0 (map (\(cod, qtd) -> preco (produto cod estoque) * qtd) carrinho)
 	
 preco (_, _, v) = v
