@@ -6,9 +6,12 @@ typedef struct celula {
 	void *info;
 } tcelula;
 
+tcelula *heap [1000];
+int posHeap = 0;
+
 void *aloca (int size) {
 	tcelula *area = (tcelula *)malloc(sizeof(int) + sizeof(void *));
-	area->count = 0;
+	area->count = 1;
 	heap[posHeap] = area;
 	posHeap++;
 	void *pInfo = malloc(size);
@@ -29,18 +32,21 @@ void adiciona (void *p, int v) {
 		}
 }
 
-void atribui (voids *left, void *right) {
+void atribui (void **left, void **right) {
 	adiciona (left, -1);
 	*left = *right;
 	adiciona (right, +1);
 }
 
+void atribui_valor (void **left, int valor) {
+	*((int *)(*left)) = valor;
+}
 
-tcelula *heap [1000];
-int posHeap = 0;
-
-main() {
-	int *i = (int *)aloca(sizeof(int));
-	int *j;
-	atribui (j, i);
+int main() {
+	void *i = aloca(sizeof(int));
+	void *j = aloca(sizeof(int));
+	atribui (&j, &i);
+	atribui_valor (&i, 10);
+	printf("%d\n", *(int *)j);
+	return 0;
 }

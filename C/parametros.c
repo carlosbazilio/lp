@@ -1,6 +1,12 @@
 
 #include "stdio.h"
 
+typedef struct ponto3D {
+	int x, y, z;
+} ponto3D;
+
+ponto3D move(ponto3D *ponto, ponto3D *incremento);
+
 void g (out int w) {
 	w = 1;
 	printf("%d\n", w);

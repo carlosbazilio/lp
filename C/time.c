@@ -1,7 +1,7 @@
 #include <time.h>
 #include <stdio.h>
 
-main(void)
+int main(void)
 {
   time_t inicio, fim;
   int i;

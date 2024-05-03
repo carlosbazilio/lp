@@ -2,7 +2,7 @@
 #include "string.h"
 
 
-main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	int i;
 	printf("Número de parâmetros: %d\n", argc);
 	//int pos = atoi(argv[3]);
@@ -10,5 +10,6 @@ main(int argc, char *argv[]) {
 		printf("Parâmetro %d: %s\n", i, argv[i]);
 	}
 	//printf("Parâmetro %d: %s\n", pos, argv[pos]);
+	return 0;
 }
 

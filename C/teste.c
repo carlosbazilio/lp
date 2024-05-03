@@ -1,12 +1,20 @@
-
 #include "stdio.h"
+#include "teste.h"
+#include "teste2.h"
 
-void f(int *x) {
-	printf("%p, %d\n", x, *x);
+int fat(int x) {
+	if (x == 0)
+		return 1;
+	return x * fat(x-1);
 }
 
-main() {
-	f(20 & 10);
+int main(int argc, char const *argv[])
+{
+	int x = 5;
+	printf("%d\n", fat(x=x+1));
+	printf("%d\n", x);
+	return 0;
 }
+
 
 

@@ -31,7 +31,10 @@ ListaGen* insere(ListaGen *l, void* p, void impr(void *), int cmp(void *, void *
 	return n;
 }
 
-void insere2(ListaGen **l, void* p, void impr(void *), int cmp(void *, void *)) {
+void insere2(ListaGen **l, 
+	         void* p, 
+	         void impr(void *), 
+	         int cmp(void *, void *)) {
 	ListaGen* n = (ListaGen *) malloc(sizeof(ListaGen));
 	n->info = p;
 	n->impressao = impr;
@@ -134,18 +137,17 @@ void *getAt(int posicao, ListaGen *l) {
 	return laux->info;
 }
 
-main() {
+int main() {
 	ListaGen* l = NULL;
-	//char *nome = "vinicius";
 	char *nome;
 	nome = (char *)malloc(sizeof(char)*10);
 	strcpy(nome, "vinicius");
-	//nome = "vinicius";
-	//l = insere(l, nome, imprimeString);
+	//l = insere(l, nome, imprimeString, comparaString);
 	insere2(&l, nome, imprimeString, comparaString);
+
 	int *x = (int *)malloc(sizeof(int));
 	(*x) = 10;
-	//l = insere(l, x, imprimeNumero);
+	//l = insere(l, x, imprimeNumero, comparaInt);
 	insere2(&l, x, imprimeNumero, comparaInt);
 
 	tReta *reta = (tReta *)malloc(sizeof(tReta));
@@ -163,4 +165,6 @@ main() {
 	printf("Pertence no. %s à lista: %s\n", str, (pertence(str, l) == 1) ? "sim" : "não");
 	limpa(&l);
 	printf("Tamanho da lista: %d\n", tamanho(l));
+
+	return 0;
 }

@@ -10,19 +10,19 @@ typedef struct retangulo {
 	int base, altura;
 } tretangulo;
 
-// typedef struct tforma {
-// 	tretangulo ret;
-// 	tcirculo circ;
-// } tforma;
-
-typedef union uforma {
+typedef struct tforma {
 	tretangulo ret;
 	tcirculo circ;
 } tforma;
 
-tforma figuras[MAX_FIGURAS];
+typedef union uforma {
+	tretangulo ret;
+	tcirculo circ;
+} uforma;
 
-void desenha(tforma f) {
+uforma figuras[MAX_FIGURAS];
+
+void desenha(uforma f) {
 	printf("%d\n", f.ret.altura);
 }
 
@@ -37,9 +37,9 @@ int main(int argc, char const *argv[]) {
 		desenha(figuras[i]);
 	}
 
-	// printf("sizeof(tforma) = %lu, sizeof(uforma) = %lu\n", 
-	// 	   sizeof(tforma),
- //           sizeof(uforma));
+	printf("sizeof(tforma) = %lu, sizeof(uforma) = %lu\n", 
+		   sizeof(tforma),
+           sizeof(uforma));
 
 	return 0;
 }

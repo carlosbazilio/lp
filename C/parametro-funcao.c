@@ -27,7 +27,7 @@ float frac5 (int k) {
 	return ++k;
 }
 
-int frac6(int k, ...) {
+float frac6(int k, ...) {
 	va_list args;
 	va_start(args, k);
 	int proxi = va_arg(args, int);
@@ -40,10 +40,11 @@ float harmonico(int lo, int hi, float f(int, ...)) {
 	float temp = 0;
 	int i;
 	for (i=lo; i<=hi; i++)
-		temp = temp + f(i, 10, 1.0, "zeh", 105.323, temp);
+		temp = temp + f(i, 10, "10", 105.323, temp, harmonico, f);
 	return temp;
 }
 
-main() {
-	printf("Valor do harmonico: %f\n", harmonico(1, 100, frac));
+int main() {
+	printf("Valor do harmonico: %f\n", harmonico(1, 3, frac6));
+	return 0;
 }

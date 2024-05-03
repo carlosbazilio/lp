@@ -10,6 +10,6 @@ int gcd (int x, int y) {
 
 main()
 {
-  printf("%d\n", gcd(16,4));
+  printf("%d\n", gcd(18,4));
 }
 
