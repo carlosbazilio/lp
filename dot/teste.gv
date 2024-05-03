@@ -1,10 +1,11 @@
 digraph G {
-    main -> parse -> execute;
-    main -> init;
-    main -> cleanup;
+    main -> parse[label="1"];
+    parse -> execute -> printf;
+    main -> init[label="0",weight="0"];
+    main -> cleanup[label="-1",weight="-1"];
     execute -> make_string;
-    execute -> printf
+    make_string -> execute[color=gray];
     init -> make_string;
-    main -> printf;
+    main -> printf[label="2"];
     execute -> compare;
 }

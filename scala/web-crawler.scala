@@ -18,7 +18,9 @@ object Crawler {
 	}
 }
 
+// Link inicial
 var links = List(args(0))
+// Profundidade da busca (quantidade de links)
 var qtd_acessos = args(1).toInt;
 while (links.size > 0 && qtd_acessos > 0) {
 	val link = links.head

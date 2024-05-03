@@ -1,17 +1,21 @@
 
 fun main(args: Array<String>) {
-    println("Alo Mundo!")
-    // var c : Desenhavel
-    // c = Circulo(10, "vermelha", true, 0, 0)
-    // var r : Desenhavel
-    // r = Retangulo(20, 30, "azul", false, 0, 0)
-    var c = Circulo(10, "vermelha", true, 0, 0)
-    var r = Retangulo(20, 30, "azul", false, 0, 0)
-    var figuras = listOf(c, r)
-    // var figuras : List<Desenhavel> 
-    // figuras = listOf(c, r)
-    for (fig in figuras) {
-        fig.mover(-10, -10)
-        fig.desenhar() // Polimorfismo !!!
+    val circ1 = Circulo(5, "amarela", true, 0, 0)
+    val ret1 = Retangulo(4, 3, "azul", false, 0, 0)
+    val objetoQQ = "teste"
+    val circ2 = Circulo(7, "verde", true, 0, 0)
+
+    ret1.cor = "vermelha"
+    // ret1.pos_x = 10
+    // ret1.pos_y = 20
+    ret1.mover(10, 20)
+
+    val figuras : List<Figura>
+    figuras = listOf<Figura>(circ1, ret1)
+    for (f in figuras) {
+        println("Desenhar():")
+        f.desenhar()
+        println("toString():")
+        println(f.toString())
     }
 }
